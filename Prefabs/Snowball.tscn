@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://tlm6i71opqge"]
+
+[ext_resource type="Texture2D" uid="uid://bfygccxe7xtry" path="res://Art/Player/penguinbullet.png" id="1_7gsqq"]
+[ext_resource type="Script" path="res://Scripts/Snowball.cs" id="1_moeeb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8cty"]
+atlas = ExtResource("1_7gsqq")
+region = Rect2(0, 0, 30, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avpnd"]
+atlas = ExtResource("1_7gsqq")
+region = Rect2(30, 0, 30, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8ig3"]
+atlas = ExtResource("1_7gsqq")
+region = Rect2(60, 0, 30, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsr31"]
+atlas = ExtResource("1_7gsqq")
+region = Rect2(90, 0, 30, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_adtcc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8cty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avpnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8ig3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsr31")
+}],
+"loop": false,
+"name": &"Spawn",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_njfl7"]
+radius = 15.0
+
+[node name="Snowball" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_moeeb")
+speed = 500.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_adtcc")
+animation = &"Spawn"
+autoplay = "Spawn"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_njfl7")

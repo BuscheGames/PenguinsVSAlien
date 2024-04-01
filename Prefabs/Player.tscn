@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://q6wtm1smgoqd"]
+[gd_scene load_steps=6 format=3 uid="uid://q6wtm1smgoqd"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_kk7rv"]
 [ext_resource type="Texture2D" uid="uid://c2mfyb80xkquv" path="res://Art/Player/penguin.png" id="1_rrfti"]
+[ext_resource type="PackedScene" uid="uid://tlm6i71opqge" path="res://Prefabs/Snowball.tscn" id="2_djtx3"]
 [ext_resource type="Texture2D" uid="uid://d12epnmvlr28c" path="res://Art/Player/cubngun.png" id="3_c854n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6s3s3"]
@@ -10,9 +11,11 @@ height = 104.0
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(613, 347)
+collision_mask = 8
 script = ExtResource("1_kk7rv")
 speed = 400.0
 rotationSpeed = 0.1
+snowball = ExtResource("2_djtx3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_rrfti")
