@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://q6wtm1smgoqd"]
+
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_kk7rv"]
+[ext_resource type="Texture2D" uid="uid://c2mfyb80xkquv" path="res://Art/Player/penguin.png" id="1_rrfti"]
+[ext_resource type="Texture2D" uid="uid://d12epnmvlr28c" path="res://Art/Player/cubngun.png" id="3_c854n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6s3s3"]
+radius = 24.0
+height = 104.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(613, 347)
+script = ExtResource("1_kk7rv")
+speed = 400.0
+rotationSpeed = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rrfti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6s3s3")
+
+[node name="Cannon" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_c854n")
+
+[node name="ShootSpawn" type="Marker2D" parent="Cannon"]
+position = Vector2(53, 0)
