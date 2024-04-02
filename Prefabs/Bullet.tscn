@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://ci8ms3r33popu"]
+
+[ext_resource type="Texture2D" uid="uid://c7t2uxtnn7aoc" path="res://Art/Alien/minionbullet2.png" id="1_77w8g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2ydd"]
+atlas = ExtResource("1_77w8g")
+region = Rect2(0, 0, 33, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyvq5"]
+atlas = ExtResource("1_77w8g")
+region = Rect2(33, 0, 33, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5qe3"]
+atlas = ExtResource("1_77w8g")
+region = Rect2(66, 0, 33, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_45qok"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2ydd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyvq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5qe3")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_032gw"]
+radius = 6.0
+
+[node name="Bullet" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_45qok")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.16228
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_032gw")

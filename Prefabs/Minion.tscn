@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7g7i48g21p64"]
+
+[ext_resource type="Script" path="res://Scripts/Minion.cs" id="1_ao4vs"]
+[ext_resource type="Texture2D" uid="uid://lhixu4odwcnm" path="res://Art/Alien/miniondeath.png" id="1_wb2nx"]
+[ext_resource type="Texture2D" uid="uid://dpuajbpisx8k3" path="res://Art/Alien/minion.png" id="2_uqpcs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ckbq"]
+atlas = ExtResource("1_wb2nx")
+region = Rect2(0, 0, 63, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob0f8"]
+atlas = ExtResource("1_wb2nx")
+region = Rect2(63, 0, 63, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g7jo"]
+atlas = ExtResource("1_wb2nx")
+region = Rect2(126, 0, 63, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ieasi"]
+atlas = ExtResource("1_wb2nx")
+region = Rect2(189, 0, 63, 67)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7qvyc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ckbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob0f8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g7jo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ieasi")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uqpcs")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qrxq6"]
+radius = 23.3452
+
+[node name="Minion" type="CharacterBody2D"]
+position = Vector2(542, 380)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_ao4vs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7qvyc")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.731874
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qrxq6")
