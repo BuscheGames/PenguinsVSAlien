@@ -1,9 +1,61 @@
-[gd_scene load_steps=6 format=3 uid="uid://q6wtm1smgoqd"]
+[gd_scene load_steps=13 format=3 uid="uid://q6wtm1smgoqd"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_kk7rv"]
 [ext_resource type="Texture2D" uid="uid://c2mfyb80xkquv" path="res://Art/Player/penguin.png" id="1_rrfti"]
 [ext_resource type="PackedScene" uid="uid://tlm6i71opqge" path="res://Prefabs/Snowball.tscn" id="2_djtx3"]
 [ext_resource type="Texture2D" uid="uid://d12epnmvlr28c" path="res://Art/Player/cubngun.png" id="3_c854n"]
+[ext_resource type="Texture2D" uid="uid://b8mdmkk0fgew3" path="res://Art/Player/penguindeath.png" id="3_hn4fa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drgmi"]
+atlas = ExtResource("3_hn4fa")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pokkv"]
+atlas = ExtResource("3_hn4fa")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58ohr"]
+atlas = ExtResource("3_hn4fa")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_goiot"]
+atlas = ExtResource("3_hn4fa")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbra7"]
+atlas = ExtResource("3_hn4fa")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sm8j5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drgmi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pokkv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58ohr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_goiot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbra7")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rrfti")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 7.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6s3s3"]
 radius = 24.0
@@ -18,8 +70,11 @@ rotationSpeed = 0.1
 cooldownTimer = 0.5
 snowball = ExtResource("2_djtx3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_rrfti")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sm8j5")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

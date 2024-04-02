@@ -37,7 +37,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Death",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -59,9 +59,9 @@ script = ExtResource("1_ao4vs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7qvyc")
-animation = &"Idle"
+animation = &"Death"
 autoplay = "Idle"
-frame_progress = 0.731874
+frame_progress = 0.38651
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qrxq6")
