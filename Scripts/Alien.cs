@@ -4,10 +4,16 @@ using Godot.Collections;
 public partial class Alien : CharacterBody2D {
 
     [Export] PackedScene minionPrefab;
+    [Export] float rotationSpeed;
     [Export] int radius;
+    [Export] int minions;
     
     public override void _Ready() {
-        SpawnMinions((int)GD.RandRange(4, 8));
+        SpawnMinions(minions);
+    }
+
+    public override void _PhysicsProcess(double delta) {
+        Rotation -= rotationSpeed * (float) delta;
     }
 
     void SpawnMinions(int number) {
@@ -21,10 +27,7 @@ public partial class Alien : CharacterBody2D {
     }
 
     Vector2 GetMinionPosition(float degree) {
-        Vector2 position = new Vector2();
-        position.X = radius * Mathf.Cos(degree);
-        position.Y = radius * Mathf.Sin(degree);
-        return position;
+        return new Vector2(radius * Mathf.Cos(degree), radius * Mathf.Sin(degree));
     }
 
 }
